@@ -190,4 +190,54 @@ router.delete('/delete-supplier/:supplier_id', async (req, res) => {
     }
 });
 
+
+// Categories Routes
+router.post('/products-filter', async (req, res) => {
+    const { category_id } = req.body; 
+
+    if (!category_id) {
+        return res.status(400).json({ error: 'category_id is required' });
+    }
+
+    try {
+        const result = await req.pool.query(
+            'SELECT * FROM products WHERE category_id = $1',[category_id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'No products found for the given category_id' });
+        }
+
+        res.status(200).json(result.rows); 
+    } catch (error) {
+        res.status(500).json({ error: error.message }); 
+    }
+});
+
+// Search Products by Name
+router.get('/products/search', async (req, res) => {
+    const { name } = req.query; 
+
+    if (!name) {
+        return res.status(400).json({ error: 'Product name is required' });
+    }
+
+    try {
+        const result = await req.pool.query(
+            'SELECT * FROM products WHERE LOWER(name) LIKE LOWER($1)',
+            [`%${name}%`] 
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'No products found with the given name' });
+        }
+
+        res.status(200).json(result.rows); 
+    } catch (error) {
+        res.status(500).json({ error: error.message }); 
+    }
+});
+
+
+
 module.exports = router;
