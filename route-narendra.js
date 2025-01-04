@@ -238,6 +238,48 @@ router.get('/products/search', async (req, res) => {
     }
 });
 
+// hello front-enders create an button and it should refresh the page for just trigger the below route and sending mail
 
+router.get('/products/low-cost', async (req, res) => {
+    try {
+        const result = await req.pool.query(
+            'SELECT * FROM products WHERE stock_level < 5 ORDER BY price ASC'
+        );
+
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: '',// add ypur email
+                pass: ''//add your gogle app passwords
+            }
+        });
+
+        // Email options
+        const mailOptions = {
+            from: '',
+            to: 'murugan.s@lumen.com', 
+            subject: 'Low Stock Alert',
+            text: `The following products have low stock levels:\n\n${JSON.stringify(result.rows)}`
+        };
+
+        // Send email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+
+        // Respond to the client
+        res.status(200).json({ message: 'Low stock products retrieved and email sent.', data: result.rows });
+
+    } catch (error) {
+        console.error('Error occurred:', error);
+        res.status(500).json({ error: "Error retrieving low-cost products or sending email." });
+    }
+});
 
 module.exports = router;
