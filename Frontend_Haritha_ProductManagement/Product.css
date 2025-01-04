@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('background-image.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    text-align: center;
+    display: table;
+    vertical-align: middle;
+    width: 80%;
+    height: 400px;
+    max-width :1200px;
+    margin: 20px auto;
+    background:rgba(255, 255, 255, 0.9);
+    padding: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .form-section, .table-section {
+    margin: 20px 0;
+  }
+  /* Form styling */
+.form-group {
+    display: flex;
+    flex-direction: center;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  label {
+    width: 30%;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+    text-align: right;
+  }
+  
+  input {
+    padding: 1%;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30%;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+ /* form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  form label{
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+
+  }
+  
+  form input {
+    padding: 10px;
+    width: calc(25% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color:white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }*/
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  table th {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table tr:hover {
+    background-color: #ddd;
+  }
+  
+  button.action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.edit {
+    background-color: #28a745;
+    color: black;
+  }
+  
+  button.edit:hover {
+    background-color: #218838;
+  }
+  
+  button.delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  button.delete:hover {
+    background-color: #c82333;
+  }
+  
