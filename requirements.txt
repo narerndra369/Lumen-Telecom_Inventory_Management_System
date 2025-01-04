@@ -1,0 +1,3 @@
+pip install scikit-learn flask flask-cors joblib
+
+python app.py
